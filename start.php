@@ -24,7 +24,7 @@ function ghost_theme_init() {
 		elgg_unregister_plugin_hook_handler('output:before', 'layout', 'elgg_views_add_rss_link');
 	}
         elgg_extend_view('elgg.css', 'resources/index.css');
-
+elgg_register_plugin_hook_handler('index','system','ghost_theme_index');
 }
 
 /**
@@ -114,4 +114,11 @@ function ghost_theme_setup_head($hook, $type, $data) {
 	);
 
 	return $data;
+}
+
+function ghost_theme_index() {
+    if (!include_once(dirname(dirname(__FILE__)) . "/ghost_theme/views/default/custom_index/home.php"))
+        return false;
+ 
+    return true;
 }

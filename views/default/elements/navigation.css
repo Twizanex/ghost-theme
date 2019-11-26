@@ -183,7 +183,7 @@
 	float: left;
 }
 .elgg-menu-site > li > a {
-	color: #FFF;
+	color: #edf2f7;
 	padding: 14px 18px;
 }
 .elgg-menu-site > li > a:hover {
@@ -191,7 +191,7 @@
 }
 .elgg-menu-site > .elgg-state-selected > a,
 .elgg-menu-site > li:hover > a {
-	background-color: #60B8F7;
+	background-color: #313945;
 	color: #FFF;
 }
 .elgg-menu-site > li > ul {
