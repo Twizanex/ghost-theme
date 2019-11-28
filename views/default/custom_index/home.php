@@ -31,9 +31,9 @@ $site_url = elgg_get_site_url();
 			<div class="container max-w-4xl mx-auto pt-16 md:pt-32 text-center break-normal">
 				<!--Title-->
 					 <p class="text-white font-extrabold text-3xl md:text-5xl">
-						👻 Ghostwind CSS
+						👻 Ghostwind for Elgg
 					</p>
-					<p class="text-xl md:text-2xl text-gray-500">Welcome to my Blog</p>
+					<p class="text-xl md:text-2xl text-gray-500">Multimedia Publishing Platform</p>
 			</div>
 		</div>
 		
