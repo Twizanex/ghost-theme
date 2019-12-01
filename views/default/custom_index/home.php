@@ -176,7 +176,11 @@ echo elgg_view("page/homepage/nubesoplayer", array('file_guid' => $entities[0]->
 }
                                         ?>
                                         
-</div>	
+</div>	<div class="container max-w-4xl mx-auto pt-16   text-center break-normal">
+				<!--Title-->
+					 
+					<p class="text-xl md:text-2xl text-gray-900">Recent Albums</p>
+			</div>
                                
                <div class="flex flex-wrap justify-between pt-12 -mx-6">
                    <?php 
