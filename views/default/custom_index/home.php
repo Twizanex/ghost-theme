@@ -14,7 +14,7 @@ $site_url = elgg_get_site_url();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tailwind Starter Template - Ghostwind CSS : Tailwind Toolbox</title>
+    <title>Ghostwind Theme for elgg</title>
 		<meta name="author" content="name">
     <meta name="description" content="description here">
 		<meta name="keywords" content="keywords,here">
@@ -241,18 +241,7 @@ echo elgg_view("page/homepage/nubesoplayer", array('file_guid' => $entities[0]->
 				</div>
 				<div class="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
 					<ul class="list-reset flex justify-center flex-1 md:flex-none items-center">
-					  <li>
-						<a class="inline-block py-2 px-3 text-white no-underline" href="#">Active</a>
-					  </li>
-					  <li>
-						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="#">link</a>
-					  </li>
-					  <li>
-						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="#">link</a>
-					  </li>
-						<li>
-						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="#">link</a>
-					  </li>
+					  <?php echo elgg_view_menu('footer', array('sort_by' => 'priority', 'class' => 'inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3')); ?>
 					</ul>
 				</div>
 			</div>
