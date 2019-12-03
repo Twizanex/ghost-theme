@@ -5,25 +5,38 @@
  * This is just a helper view to make it easier to use Elgg's
  * page-rendering helper functions like elgg_view_page.
  */
+$ghost_redirect = elgg_get_plugin_setting('ghost_redirect', 'ghost-theme'); 
+
+if(!$ghost_redirect)
+{
+    $ghost_redirect = 'activity';
+}
+
+
+
 if(elgg_is_logged_in()) {
              
-              forward('activity');
+              forward($ghost_redirect);
          }
 $mod_params = array('class' => 'elgg-module-highlight');
 echo  elgg_view('page/homepage/homepage_entities');
-$site_url = elgg_get_site_url();
 
+$site_url = elgg_get_site_url();
+ $site = elgg_get_site_entity();
+$site_name = $site->name;
+$site_description = $site->description;
 ?>
  <head>
+     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ghostwind Theme for elgg</title>
+    <title><?php echo $site_name; ?></title>
 		<meta name="author" content="name">
-    <meta name="description" content="description here">
+    <meta name="description" content="<?php echo $site_description;?>">
 		<meta name="keywords" content="keywords,here">
-		<link href="<?php echo $site_url?>mod/ghost_theme/vendors/tailwind/tailwind.min.css" rel="stylesheet"> <!--Replace with your tailwind.css once created-->
-		<link href="<?php echo $site_url?>mod/ghost_theme/vendors/animate/animate.min.css" rel="stylesheet">
+		<link href="<?php echo $site_url?>mod/ghost-theme/vendors/tailwind/tailwind.min.css" rel="stylesheet"> <!--Replace with your tailwind.css once created-->
+		<link href="<?php echo $site_url?>mod/ghost-theme/vendors/animate/animate.min.css" rel="stylesheet">
                 <style>
                     .home-tags
                     {
@@ -39,7 +52,7 @@ $site_url = elgg_get_site_url();
 <body class="bg-gray-200 font-sans leading-normal tracking-normal">
 
 	<!--Header-->
-	<div class="w-full m-0 p-0 bg-cover bg-bottom" style="background-image:url('mod/ghost_theme/vendors/images/cover.jpg'); height: 50vh; max-height:460px;">
+	<div class="w-full m-0 p-0 bg-cover bg-bottom" style="background-image:url('mod/ghost-theme/vendors/images/cover.jpg'); height: 50vh; max-height:460px;">
 			<div class="container max-w-4xl mx-auto pt-16 md:pt-32 text-center break-normal">
 				<!--Title-->
 					 <p class="text-white font-extrabold text-3xl md:text-5xl">
@@ -234,7 +247,14 @@ echo elgg_view("page/homepage/nubesoplayer", array('file_guid' => $entities[0]->
                                                                     
                                                                      <?php 
                                                                     foreach($la->tags as $tg){
-                                                                        $tag_link = '<a href="'.$site_url . 'search?q=' . $tg . '&search_type=tags" class="inline-block text-gray-600 no-underline hover:text-gray hover:underline py-2 px-3">'. $tg .'</a> '; 
+                                                                        $tag_link = 
+                                                                                '<a href="'
+                                                                                .$site_url . 
+                                                                                'search?q=' 
+                                                                                . $tg . 
+                                                                                '&search_type=tags" class="inline-block text-gray-600 no-underline hover:text-gray hover:underline py-2 ">'
+                                                                                . $tg .
+                                                                                '</a> '; 
                                                                         echo $tag_link;
                                                                     } 
                                                                     ?>

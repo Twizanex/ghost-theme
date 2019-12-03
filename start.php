@@ -12,7 +12,7 @@ function ghost_theme_init() {
 	elgg_register_event_handler('pagesetup', 'system', 'ghost_theme_pagesetup', 1000);
 
 	// theme specific CSS
-	elgg_extend_view('elgg.css', 'ghost_theme/css');
+	elgg_extend_view('elgg.css', 'ghost-theme/css');
 
 	elgg_unextend_view('page/elements/header', 'search/header');
 	elgg_extend_view('page/elements/sidebar', 'search/header', 0);
@@ -110,14 +110,14 @@ function ghost_theme_setup_head($hook, $type, $data) {
 
 	$data['links']['apple-touch-icon'] = array(
 		'rel' => 'apple-touch-icon',
-		'href' => elgg_get_simplecache_url('ghost_theme/homescreen.png'),
+		'href' => elgg_get_simplecache_url('ghost-theme/homescreen.png'),
 	);
 
 	return $data;
 }
 
 function ghost_theme_index() {
-    if (!include_once(dirname(dirname(__FILE__)) . "/ghost_theme/views/default/custom_index/home.php"))
+    if (!include_once(dirname(dirname(__FILE__)) . "/ghost-theme/views/default/custom_index/home.php"))
         return false;
  
     return true;
