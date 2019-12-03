@@ -18,6 +18,7 @@ $header = elgg_view('page/elements/header', $vars);
 $navbar = elgg_view('page/elements/navbar', $vars);
 $messages = elgg_view('page/elements/messages', array('object' => $vars['sysmessages']));
 //$content = elgg_view('page/elements/body', $vars);
+$site_url = elgg_get_site_url();
 $footer = elgg_view('page/elements/footer', $vars);
 $default_items = elgg_extract('default', $vars['menu'], array());
 ?>
@@ -38,7 +39,7 @@ $default_items = elgg_extract('default', $vars['menu'], array());
 	</style>
         <?php
 $site = elgg_get_site_entity();
-$site_url = elgg_get_site_url();
+ 
 $site_name = $site->name;
 echo elgg_view('page/elements/head', $vars['head']);
 echo elgg_view('page/elements/topbar_wrapper', $vars);
@@ -51,7 +52,7 @@ echo elgg_view('page/elements/topbar_wrapper', $vars);
 	<nav class=" p-4 mt-0 w-full" style="background-color: #313945;">
         <div class="container mx-auto flex items-center">
 		    <div class="flex text-white font-extrabold">
-				<a class="flex text-white text-base no-underline hover:text-white hover:no-underline" href="#"> 
+                        <a class="flex text-white text-base no-underline hover:text-white hover:no-underline" href="<?php echo $site_url;?>"> 
 					👻 <span class="hidden w-0 md:w-auto md:block pl-1">Ghostwind CSS</span>
 				</a>
             </div>
@@ -68,7 +69,7 @@ echo elgg_view('page/elements/topbar_wrapper', $vars);
 		<div class="bg-white">
 			<div class="flex flex-wrap items-center content-center">
 				<div class="flex w-1/2 justify-start text-white font-extrabold">
-					<a class="flex text-gray-900 no-underline hover:text-gray-900 hover:no-underline pl-2" href="#">
+					<a class="flex text-gray-900 no-underline hover:text-gray-900 hover:no-underline pl-2" href="<?php echo $site_url;?>">
 						👻 <span class="hidden w-0 md:w-auto md:block pl-1">Ghostwind CSS</span>
 					</a>
 				</div>
