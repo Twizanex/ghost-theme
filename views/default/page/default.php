@@ -16,6 +16,7 @@
 $content = elgg_view('page/elements/body', $vars);
 $header = elgg_view('page/elements/header', $vars);
 $navbar = elgg_view('page/elements/navbar', $vars);
+$messages = elgg_view('page/elements/messages', array('object' => $vars['sysmessages']));
 //$content = elgg_view('page/elements/body', $vars);
 $footer = elgg_view('page/elements/footer', $vars);
 $default_items = elgg_extract('default', $vars['menu'], array());
@@ -59,6 +60,9 @@ echo elgg_view('page/elements/topbar_wrapper', $vars);
 			</div>
         </div>
 	</nav>
+        <div class="elgg-page-messages">
+		<?php echo $messages; ?>
+	</div>
 	<!--slide in nav-->
 	<div id="header" class="bg-white fixed w-full z-10 top-0 hidden animated" style="opacity: .95;">
 		<div class="bg-white">

@@ -15,7 +15,7 @@ foreach ($default_items as $menu_item) {
 }
 
 if ($more_items) {
-    /*
+    
 	echo '<li class="elgg-more">';
 
 	$more = elgg_echo('more');
@@ -27,7 +27,6 @@ if ($more_items) {
 	));
 	
 	echo '</li>';
-     * 
-     */
+      
 }
 echo '</ul>';

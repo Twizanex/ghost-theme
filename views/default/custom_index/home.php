@@ -5,10 +5,14 @@
  * This is just a helper view to make it easier to use Elgg's
  * page-rendering helper functions like elgg_view_page.
  */
-
+if(elgg_is_logged_in()) {
+             
+              forward('activity');
+         }
 $mod_params = array('class' => 'elgg-module-highlight');
 echo  elgg_view('page/homepage/homepage_entities');
 $site_url = elgg_get_site_url();
+
 ?>
  <head>
     <meta charset="UTF-8">
@@ -20,7 +24,15 @@ $site_url = elgg_get_site_url();
 		<meta name="keywords" content="keywords,here">
 		<link href="<?php echo $site_url?>mod/ghost_theme/vendors/tailwind/tailwind.min.css" rel="stylesheet"> <!--Replace with your tailwind.css once created-->
 		<link href="<?php echo $site_url?>mod/ghost_theme/vendors/animate/animate.min.css" rel="stylesheet">
-		
+                <style>
+                    .home-tags
+                    {
+                        color: #5097CF; 
+                        
+                    }
+                    
+                     
+                </style>
 </head>
 
 
@@ -47,7 +59,15 @@ $site_url = elgg_get_site_url();
 					<div class="container mx-auto flex items-center">
 						
 						<div class="flex w-1/2 pl-4 text-sm">
-							 
+							<ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
+								<li class="mr-2">
+								<a class="inline-block py-2 px-2 text-white no-underline hover:underline" 
+                                                                   href="<?php echo $site_url?>login">
+                                                                    Sign in
+                                                                </a>
+								</li>
+								  
+							</ul> 
 						</div>
 
 
@@ -161,11 +181,13 @@ echo elgg_view("page/homepage/nubesoplayer", array('file_guid' => $entities[0]->
 					<div class="w-full md:w-1/3 p-6 flex flex-col flex-shrink">
 						<div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg">
 							<a href="<?php echo $site_url?>photos/image/<?php echo $lp->getGuid() ?>/" class="flex flex-wrap no-underline hover:no-underline">
-        <img src="<?php echo $site_url?>photos/thumbnail/<?php echo $lp->getGuid() ?>/large/" class="h-full w-full rounded-t pb-6">
+        <img src="<?php echo $site_url?>photos/thumbnail/<?php echo $lp->getGuid() ?>/large/" class="h-full w-full rounded-t pb-6"></a>
 								<p class="w-full text-gray-600 text-xs md:text-sm px-6"><?php echo $lp->title; ?></p>
 								 
-								 
-							</a>
+								 <p class="text-gray-800 font-serif text-base px-6 mb-5">
+									<?php echo $lp->description; ?>
+								</p>
+							
 						</div>
 						<div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow-lg p-6">
 							 
@@ -198,21 +220,22 @@ echo elgg_view("page/homepage/nubesoplayer", array('file_guid' => $entities[0]->
 							<a href="<?php echo $site_url?>photos/album/<?php echo $la->getGuid(); ?>/" class="flex flex-wrap no-underline hover:no-underline">
 								<img src="<?php echo $site_url?>photos/thumbnail/<?php echo $la->cover ?>/master/" class="h-full w-full rounded-t pb-6">
 								<p class="w-full text-gray-600 text-xs md:text-sm px-6"> </p>
-								<div class="w-full font-bold text-xl text-gray-900 px-6"><?php echo $la->title; ?></div>
+								<div class="w-full font-bold text-xl text-gray-900 px-6"><?php echo $la->title; ?></div></a>
 								<p class="text-gray-800 font-serif text-base px-6 mb-5">
 									<?php echo $la->description; ?>
                                                                    
 								</p>
-							</a>
+							
 						</div>
 						<div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow-lg p-6">
 							<div class="flex items-center justify-between">
 								
-								<p class="text-gray-600 text-xs md:text-sm">
+								<p class="text-gray-600 text-xs md:text-sm">  
                                                                     
                                                                      <?php 
                                                                     foreach($la->tags as $tg){
-                                                                        echo $tg . ' '; 
+                                                                        $tag_link = '<a href="'.$site_url . 'search?q=' . $tg . '&search_type=tags" class="inline-block text-gray-600 no-underline hover:text-gray hover:underline py-2 px-3">'. $tg .'</a> '; 
+                                                                        echo $tag_link;
                                                                     } 
                                                                     ?>
                                                                    </p>
