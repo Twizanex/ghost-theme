@@ -25,6 +25,37 @@ function ghost_theme_init() {
 	}
         elgg_extend_view('elgg.css', 'resources/index.css');
 elgg_register_plugin_hook_handler('index','system','ghost_theme_index');
+
+if (elgg_is_active_plugin('file')) {
+elgg_register_menu_item('homepage', array(
+        'name' => 'files',
+        'href' => 'file/all',
+        'priority' => '3',
+        'class' => 'inline-block py-2 px-2 text-white no-underline hover:underline',
+        'text' => elgg_echo('file'),
+));
+}
+
+
+if (elgg_is_active_plugin('tidypics')) {
+elgg_register_menu_item('homepage', array(
+        'name' => 'photos',
+        'href' => 'photos/siteimagesall',
+        'priority' => '2',
+        'class' => 'inline-block py-2 px-2 text-white no-underline hover:underline',
+        'text' => elgg_echo('photos'),
+));
+}
+
+
+elgg_register_menu_item('homepage', array(
+        'name' => 'login',
+        'href' => '/login',
+        'priority' => '1',
+        'class' => 'inline-block py-2 px-2 text-white no-underline hover:underline',
+        'text' => elgg_echo('Sign in'),
+));
+
 }
 
 /**

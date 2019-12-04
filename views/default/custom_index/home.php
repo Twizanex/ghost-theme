@@ -72,15 +72,17 @@ $site_description = $site->description;
 					<div class="container mx-auto flex items-center">
 						
 						<div class="flex w-1/2 pl-4 text-sm">
-							<ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
-								<li class="mr-2">
-								<a class="inline-block py-2 px-2 text-white no-underline hover:underline" 
-                                                                   href="<?php echo $site_url?>login">
-                                                                    Sign in
-                                                                </a>
-								</li>
+							 
+                                        <?php
+                                        echo elgg_view_menu('homepage', 
+                                                array(
+                                                    'sort_by' => 'priority', 
+                                                    'class'=>'list-reset flex justify-between flex-1 md:flex-none items-center'
+                                                    ));
+
+                                        ?>
 								  
-							</ul> 
+							 
 						</div>
 
 
@@ -95,7 +97,7 @@ $site_description = $site->description;
 					
 				<!--Lead Card-->
 				<div class="   bg-white rounded overflow-hidden shadow-lg">
-					<a href="#" class="flex flex-wrap no-underline hover:no-underline">
+					<div class="flex flex-wrap no-underline hover:no-underline">
 						<div class="w-full md:w-2/3 rounded-t" >	
 							<?php
                                                         
@@ -115,7 +117,11 @@ echo elgg_view("page/homepage/nubesoplayer", array('file_guid' => $entities[0]->
 						<div class="w-full md:w-1/3 flex flex-col flex-grow flex-shrink">
 							<div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg">
 								<p class="w-full text-gray-600 text-xs md:text-sm pt-6 px-6">Video</p>
-								<div class="w-full font-bold text-xl text-gray-900 px-6">👋 <?php if($entities[0] != null) echo $entities[0]->title; ?></div>
+								<div class="w-full font-bold text-xl text-gray-900 px-6"> 
+                                                                    <a href="<?php echo $site_url;?>file/view/<?php echo $entities[0]->getGUID(); ?>/" class="flex flex-wrap no-underline hover:no-underline">
+                                                                    <?php if($entities[0] != null) echo $entities[0]->title; ?>
+                                                                        </a>
+                                                                </div>
 								<p class="text-gray-800 font-serif text-base px-6 mb-5">
 								<?php $entities[0]->description;?>
 								</p>
@@ -129,7 +135,7 @@ echo elgg_view("page/homepage/nubesoplayer", array('file_guid' => $entities[0]->
 							</div>
 						</div>
 
-					</a>
+					</div>
 				</div>
 				<!--/Lead Card-->
 
@@ -150,20 +156,25 @@ echo elgg_view("page/homepage/nubesoplayer", array('file_guid' => $entities[0]->
 					<!--1/3 col -->
 					<div class="w-full md:w-1/2 p-6 flex flex-col  flex-shrink">
 						<div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg">
-							<div href="#" class="flex flex-wrap no-underline hover:no-underline">
+							<div  class="flex flex-wrap no-underline hover:no-underline">
                                                             <?php echo elgg_view("page/homepage/smallplayer", array('file_guid' => $t->getGUID(), 'type' => 'mp4')); ?>
                                                             <p class="h-48  pb-6"></p>
 								<p class="w-full text-gray-600 text-xs md:text-sm px-6">Video</p>
-								<div class="w-full font-bold text-xl text-gray-900 px-6"><?php echo $t->title;?></div>
+								<div class="w-full font-bold text-xl text-gray-900 px-6">
+                                                                    <a href="<?php echo $site_url;?>file/view/<?php echo $t->getGUID(); ?>/" class="flex flex-wrap no-underline hover:no-underline">
+                                                                        <?php echo $t->title;?>
+                                                                </a>
+                                                                </div>
 								<p class="text-gray-800 font-serif text-base px-6 mb-5">
-									<?php echo $t->title;?>
+									<?php echo $t->description;?>
 								</p>
 							</div>
 						</div>
 						<div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow-lg p-6">
 							<div class="flex items-center justify-between">
-								
+								<a href="<?php echo $site_url;?>file/owner/<?php echo $entities[0]->getOwnerEntity()->username; ?>/" class="flex flex-wrap no-underline hover:no-underline">
 								<p class="text-gray-600 text-xs md:text-sm">Shared by: <?php echo $entities[0]->getOwnerEntity()->username; ?></p>
+                                                                </a>
 							</div>
 						</div>
 					</div>
